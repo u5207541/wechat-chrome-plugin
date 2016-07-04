@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+
+  "name": "xunBoDownList",
+  "description": "chrome get xunBo downList quickly",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "favicon.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "http://www.xiamp4.com/",
+     "clipboardWrite"
+  ],
+  "content_scripts": [
+        {
+            "matches": ["http://www.xiamp4.com/*"],
+            "js": ["./js/jquery.js", "./js/uu.js"]
+        }
+  ]
+}
