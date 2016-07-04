@@ -1,6 +1,7 @@
 /**
  * Created by UU on 16-1-31.
  */
+//注解 测试提交
 $(function(){
     var temp = "";
     var $button = $('<a href="javascript:void(0);" onclick="">复制(chrome)</a>');
