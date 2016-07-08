@@ -195,12 +195,10 @@ $(function(){
             wechatArtObj.readUri = href.replace(weiboURI,getComments);
             getReadNum($this,wechatArtObj);
         })
-        //每周发布次数
-        var pushCount = 0;
-        var notifyIndex = 0;
+
         // After 10 s, the article's readNum is not exist, reload page
         var countException  = 0;
-        var avgReadNum = 0;
+
         var isPush = setInterval(function(){
             countException ++;
             for(var key in indexObj){
@@ -213,6 +211,10 @@ $(function(){
                 }
             }
 
+            //每周发布次数
+            var pushCount = 0;
+            var notifyIndex = 0;
+            var avgReadNum = 0;
 
             for(var key in indexObj){
                 notifyIndex++;
@@ -227,7 +229,12 @@ $(function(){
             indexObj.verified = $('.success').length; //是否认证
             indexObj.picture = $('.radius_avatar img').attr('src');   //头像
             indexObj.description = $('.profile_desc_value').attr('title'); //描述
-            indexObj.avgReadNum = avgReadNum;
+
+            if (notifyIndex > 0) {
+                indexObj.avgReadNum = (avgReadNum / notifyIndex).toFixed(0);
+            }else{
+                indexObj.avgReadNum = 0;
+            }
             indexObj.pushCount = pushCount;
 
             try{
